@@ -1,68 +1,181 @@
-/* ===========================
-   Estilos para Passos com Imagens
-   =========================== */
+:root {
+  --primary-color: #005a87;
+  --secondary-color: #83c5e6;
+  --accent-color: #f8f9fa;
+  --text-color: #333;
+  --sidebar-width: 280px;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f5f7f9;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: white;
+  padding: 20px 0;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+  z-index: 10;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.sidebar > ul {
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 8px 0;
+}
+
+.sidebar a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 5px 15px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.sidebar li.active > a {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding: 20px;
+  margin-left: var(--sidebar-width);
+}
+
+.content-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.guide-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Step images and layout */
 .steps-container {
-    margin-top: 30px; /* Espaço acima do container de passos */
-    /* max-width: 800px;  Remove ou ajusta se quiser que ocupe mais espaço do .content */
-    background-color: #fff; /* Fundo branco para a área dos passos */
-    padding: 20px 0; /* Padding vertical, sem padding horizontal extra */
-    border-radius: 8px; /* Bordas arredondadas */
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra opcional */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .step {
-    margin-bottom: 35px; /* Espaço entre cada passo (imagem + legenda) */
-    padding-bottom: 25px; /* Espaço interno inferior */
-    border-bottom: 1px solid #eee; /* Linha separadora sutil */
-    text-align: center; /* Centraliza a imagem e a legenda dentro do passo */
+  background-color: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
 }
 
-.step:last-child {
-    border-bottom: none; /* Remove a linha do último item */
-    margin-bottom: 0;
+.step:hover {
+  transform: translateY(-5px);
 }
 
 .step img {
-    max-width: 90%; /* Limita largura da imagem a 90% do container do passo */
-    height: auto; /* Mantém a proporção da imagem */
-    display: block; /* Para centralizar corretamente com margin: auto */
-    margin: 0 auto 15px auto; /* Centraliza a imagem e adiciona espaço abaixo */
-    border: 1px solid #ccc; /* Borda sutil ao redor da imagem */
-    border-radius: 4px; /* Bordas levemente arredondadas na imagem */
-    background-color: #f9f9f9; /* Fundo leve caso a imagem tenha transparência */
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  border-bottom: 1px solid #eee;
+  background-color: var(--accent-color);
 }
 
-.step .caption {
-    font-size: 0.95em; /* Tamanho da fonte da legenda */
-    color: #444; /* Cor do texto da legenda (igual aos parágrafos normais) */
-    margin-top: 10px; /* Espaço acima da legenda */
-    padding: 0 10px; /* Pequeno padding lateral para não colar nas bordas em telas menores */
-    /* max-width: 750px; /* Largura máxima para a legenda se necessário */
-    margin-left: auto;  /* Para centralizar o texto se max-width for definido */
-    margin-right: auto; /* Para centralizar o texto se max-width for definido */
+.caption {
+  padding: 15px;
+  font-size: 0.95rem;
+  color: var(--text-color);
 }
 
-.step .caption strong {
-    color: #333; /* Cor um pouco mais escura para o número do passo */
-    margin-right: 7px; /* Espacinho depois do número */
-    font-weight: bold; /* Garante negrito */
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
-/* Ajuste na responsividade, se necessário, para as imagens */
+p {
+  margin-bottom: 20px;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-    .steps-container {
-        padding: 15px 0;
-    }
-    .step {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
-    }
-    .step img {
-        max-width: 100%; /* Imagem ocupa toda a largura disponível no mobile */
-        border: none; /* Remove a borda no mobile, opcional */
-    }
-    .step .caption {
-        font-size: 0.9em;
-    }
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+  
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Special design for dental steps */
+.step:target {
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+/* Add a dental-themed icon to steps (optional) */
+.caption strong {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 5px;
 }
