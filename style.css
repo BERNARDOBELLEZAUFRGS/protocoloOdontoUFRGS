@@ -1,0 +1,68 @@
+/* ===========================
+   Estilos para Passos com Imagens
+   =========================== */
+
+.steps-container {
+    margin-top: 30px; /* Espaço acima do container de passos */
+    /* max-width: 800px;  Remove ou ajusta se quiser que ocupe mais espaço do .content */
+    background-color: #fff; /* Fundo branco para a área dos passos */
+    padding: 20px 0; /* Padding vertical, sem padding horizontal extra */
+    border-radius: 8px; /* Bordas arredondadas */
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra opcional */
+}
+
+.step {
+    margin-bottom: 35px; /* Espaço entre cada passo (imagem + legenda) */
+    padding-bottom: 25px; /* Espaço interno inferior */
+    border-bottom: 1px solid #eee; /* Linha separadora sutil */
+    text-align: center; /* Centraliza a imagem e a legenda dentro do passo */
+}
+
+.step:last-child {
+    border-bottom: none; /* Remove a linha do último item */
+    margin-bottom: 0;
+}
+
+.step img {
+    max-width: 90%; /* Limita largura da imagem a 90% do container do passo */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Para centralizar corretamente com margin: auto */
+    margin: 0 auto 15px auto; /* Centraliza a imagem e adiciona espaço abaixo */
+    border: 1px solid #ccc; /* Borda sutil ao redor da imagem */
+    border-radius: 4px; /* Bordas levemente arredondadas na imagem */
+    background-color: #f9f9f9; /* Fundo leve caso a imagem tenha transparência */
+}
+
+.step .caption {
+    font-size: 0.95em; /* Tamanho da fonte da legenda */
+    color: #444; /* Cor do texto da legenda (igual aos parágrafos normais) */
+    margin-top: 10px; /* Espaço acima da legenda */
+    padding: 0 10px; /* Pequeno padding lateral para não colar nas bordas em telas menores */
+    /* max-width: 750px; /* Largura máxima para a legenda se necessário */
+    margin-left: auto;  /* Para centralizar o texto se max-width for definido */
+    margin-right: auto; /* Para centralizar o texto se max-width for definido */
+}
+
+.step .caption strong {
+    color: #333; /* Cor um pouco mais escura para o número do passo */
+    margin-right: 7px; /* Espacinho depois do número */
+    font-weight: bold; /* Garante negrito */
+}
+
+/* Ajuste na responsividade, se necessário, para as imagens */
+@media (max-width: 768px) {
+    .steps-container {
+        padding: 15px 0;
+    }
+    .step {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+    }
+    .step img {
+        max-width: 100%; /* Imagem ocupa toda a largura disponível no mobile */
+        border: none; /* Remove a borda no mobile, opcional */
+    }
+    .step .caption {
+        font-size: 0.9em;
+    }
+}
