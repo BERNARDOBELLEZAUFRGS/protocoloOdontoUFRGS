@@ -211,24 +211,33 @@
       const modalCaption = document.getElementById("modalCaption");
       const close = document.getElementsByClassName("close")[0];
       
+      console.log("Modal element:", modal); // Verifica se o modal foi encontrado
+      console.log("Close button:", close); // Verifica se o botão de fechar foi encontrado
+      
       // Obter todas as imagens dentro dos steps
       const images = document.querySelectorAll(".step img");
+      console.log("Found images:", images.length); // Verifica quantas imagens foram encontradas
       
       // Para cada imagem, adicionar o evento de clique
-      images.forEach(img => {
+      images.forEach((img, index) => {
+        console.log(`Adding click event to image ${index}`); // Log para cada imagem
+        
         img.onclick = function() {
+          console.log("Image clicked:", this.src); // Log quando uma imagem é clicada
           modal.style.display = "block";
           modal.classList.add("fadeIn");
           modalImg.src = this.src;
           
           // Obter o texto da legenda
-          const captionText = this.nextElementSibling.textContent;
+          const captionText = this.nextElementSibling ? this.nextElementSibling.textContent : 'Sem descrição';
+          console.log("Caption:", captionText); // Log da legenda
           modalCaption.textContent = captionText;
         }
       });
       
       // Função para fechar o modal
       close.onclick = function() {
+        console.log("Close button clicked"); // Log quando o botão de fechar é clicado
         modal.style.display = "none";
       }
       

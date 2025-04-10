@@ -226,9 +226,9 @@ footer {
 
 /* Modal para visualização ampliada de imagens */
 .modal {
-  display: none;
+  display: none; /* Correto, começa oculto */
   position: fixed;
-  z-index: 1000;
+  z-index: 1000; /* Certifique-se que é maior que outros elementos */
   left: 0;
   top: 0;
   width: 100%;
