@@ -11,9 +11,11 @@
         <!-- Barra Lateral de Navegação (Simplificada para focar na panorâmica) -->
         <nav class="sidebar">
             <ul>
-                <li class="active">
-                    <a href="#passo-a-passo-panoramica">Passo a Passo - Panorâmica</a>
-                    <ul>
+                <li class="has-submenu">
+                    <a href="#passo-a-passo-panoramica" class="toggle-submenu">
+                        <span class="menu-icon">▼</span> Passo a Passo - Panorâmica
+                    </a>
+                    <ul class="submenu">
                         <li><a href="#passo-1"><strong>1.</strong> Adicionar novo paciente</a></li>
                         <li><a href="#passo-2"><strong>2.</strong> Dados do paciente</a></li>
                         <li><a href="#passo-3"><strong>3.</strong> Nova Aquisição</a></li>
@@ -39,6 +41,19 @@
                         <li><a href="#passo-23"><strong>23.</strong> Seleção de impressora</a></li>
                         <li><a href="#passo-24"><strong>24.</strong> Confirmação de impressão</a></li>
                         <li><a href="#passo-25"><strong>25.</strong> Salvar formato DORO</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Novo passo a passo -->
+                <li class="has-submenu">
+                    <a href="#passo-a-passo-tomografia" class="toggle-submenu">
+                        <span class="menu-icon">▶</span> Passo a Passo - Tomografia
+                    </a>
+                    <ul class="submenu collapsed">
+                        <li><a href="#tomo-1"><strong>1.</strong> Seleção de paciente</a></li>
+                        <li><a href="#tomo-2"><strong>2.</strong> Aquisição de imagens</a></li>
+                        <li><a href="#tomo-3"><strong>3.</strong> Reconstrução 3D</a></li>
+                        <!-- Adicione mais passos conforme necessário -->
                     </ul>
                 </li>
             </ul>
@@ -282,6 +297,45 @@
         if (event.key === "Escape" && modal.style.display === "block") {
           modal.style.display = "none";
         }
+      });
+    </script>
+
+    <!-- Adicione antes do fechamento do </body> -->
+    <script>
+      // Script para controlar os menus colapsáveis
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.toggle-submenu');
+        
+        toggleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            // Impedir que o navegador role para o topo quando clica no link
+            e.preventDefault();
+            
+            // Encontrar o submenu associado a este botão
+            const parentLi = this.parentElement;
+            const submenu = parentLi.querySelector('.submenu');
+            const menuIcon = this.querySelector('.menu-icon');
+            
+            // Toggle da classe collapsed
+            submenu.classList.toggle('collapsed');
+            
+            // Alterar o ícone
+            if (submenu.classList.contains('collapsed')) {
+              menuIcon.textContent = '▶';
+            } else {
+              menuIcon.textContent = '▼';
+              
+              // Se não estiver colapsado, navegue para o ID
+              const href = this.getAttribute('href');
+              if (href && href !== '#') {
+                const target = document.querySelector(href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+            }
+          });
+        });
       });
     </script>
 </body>

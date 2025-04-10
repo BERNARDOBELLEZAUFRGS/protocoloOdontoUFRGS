@@ -73,6 +73,34 @@ body {
   font-weight: 500;
 }
 
+/* Estilos para os submenus colapsáveis */
+.has-submenu {
+  position: relative;
+}
+
+.toggle-submenu {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+}
+
+.menu-icon {
+  display: inline-block;
+  width: 16px;
+  margin-right: 8px;
+  transition: transform 0.3s;
+}
+
+.submenu {
+  overflow: hidden;
+  max-height: 2000px;
+  transition: max-height 0.5s ease;
+}
+
+.submenu.collapsed {
+  max-height: 0;
+}
+
 /* Content area */
 .content {
   flex: 1;
